@@ -7,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {useEffect, useState} from "react";
+import {FileUpload} from "@/components/file-upload";
 
 const formSchema = z.object({
     name: z.string().min(1, {
@@ -21,13 +22,18 @@ export const InitialModal = () => {
     // fix the Hydration errors
     const [isMounted, setIsMounted] = useState(false);
 
+    // fix a bug. No return a arrow function but just set.
+    // useEffect(() => {
+    //     return () => {
+    //         setIsMounted(true)
+    //     };
+    // }, []);
+
     useEffect(() => {
-        return () => {
-            setIsMounted(true)
-        };
+        setIsMounted(true);
     }, []);
-    
-    
+
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -63,7 +69,20 @@ export const InitialModal = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className={"space-y-8"}>
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                TODO: Image upload!
+                                <FormField
+                                    name={"imageUrl"} control={form.control}
+                                    render={ ( { field } ) => (
+                                        <FormItem>
+                                            <FormControl>
+                                                <FileUpload
+                                                    endpoint={"serverImage"}
+                                                    value={field.value}
+                                                    onChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                        </FormItem>
+                                    )  }  />
+
                             </div>
 
                             <FormField
