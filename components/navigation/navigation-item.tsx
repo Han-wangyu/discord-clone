@@ -10,7 +10,7 @@ interface NavigationItemProps {
     id: string;
     imageUrl: string;
     name: string;
-};
+}
 
 export const NavigationItem = ({
                                    id,
