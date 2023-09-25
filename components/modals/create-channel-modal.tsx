@@ -13,7 +13,6 @@ import {useParams, useRouter} from "next/navigation";
 import {useModal} from "@/hooks/use-modal-store";
 import {ChannnelType} from "@prisma/client";
 import qs from "query-string";
-import {param} from "ts-interface-checker";
 
 const formSchema = z.object({
     name: z.string().min(1, {
