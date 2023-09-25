@@ -3,8 +3,6 @@
 import {Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle} from "@/components/ui/dialog"
 import {useModal} from "@/hooks/use-modal-store";
 import {Button} from "@/components/ui/button";
-import {Check, Copy, RefreshCw} from "lucide-react";
-import {useOrigin} from "@/hooks/use-origin";
 import {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
