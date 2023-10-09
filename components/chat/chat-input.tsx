@@ -4,7 +4,7 @@ import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {useForm} from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import {Plus, Smile} from "lucide-react";
+import {Plus} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import qs from "query-string";
 import axios from "axios";
