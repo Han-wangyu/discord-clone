@@ -74,7 +74,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponseS
                 memberId: member.id,
             },
             include: {
-                member: {
+                 member: {
                     include: {
                         profile: true
                     }
