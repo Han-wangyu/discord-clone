@@ -67,7 +67,9 @@ const ChatItem = ({ id, content, member, timestamp, fileUrl, deleted, currentMem
 
         window.addEventListener("keydown", handleKeyDown);
 
-        return window.removeEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
     }, []);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -182,7 +184,7 @@ const ChatItem = ({ id, content, member, timestamp, fileUrl, deleted, currentMem
                 <div className={"hidden group-hover:flex items-center gap-x-2 absolute p-1 -top-2 right-5 bg-white dark:bg-zinc-800"}>
                     {canEditMessage && (
                         <ActionToolTip label={"Edit"}>
-                            <Edit onClick={() => setIsEditing(true)} className={"cursor-pointer ml-auto h-4 w-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"}/>
+                            <Edit onClick={() => setIsEditing(!isEditing)} className={"cursor-pointer ml-auto h-4 w-4 text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition"}/>
                         </ActionToolTip>
                     )}
                     <ActionToolTip label={"Delete"}>
