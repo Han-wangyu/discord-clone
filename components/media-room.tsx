@@ -27,7 +27,7 @@ const MediaRoom = ( { chatId, video, audio }: MediaRoomProps ) => {
             return Math.floor(Math.random() * 9000) + 1000;
         }
 
-        const name = `${user.firstName ?? ""} ${user.lastName ?? ""} - ${random4DigitNumber()}`;  // // the random4DigitNumber to prevent disconnected livekit if 2 person have same name
+        const name = `${user.firstName ?? "User"} ${user.lastName ?? user.emailAddresses[0].emailAddress.split("@").shift()} - ${random4DigitNumber()}`;  // // the random4DigitNumber to prevent disconnected livekit if 2 person have same name
 
         (async () => {
             try {
